@@ -1,0 +1,14 @@
+@model SweetSavory.Models.Treat
+
+<h1>Add a new treat</h1>
+
+@using(Html.BeginForm())
+{
+  @Html.LabelFor(model => model.TreatName)
+  @Html.TextBoxFor(model => model.TreatName)
+
+  <input type="submit" value="add new treat">
+}
+
+<p>@Html.ActionLink("Back to treat list", "Index")</p>
+<p>@Html.ActionLink("Back to home", "Index", "Home")</p>
