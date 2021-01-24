@@ -1,0 +1,20 @@
+@model SweetSavory.Models.Treat
+
+<h1>Edit treat</h1>
+<h4>Treat being edited: @Html.DisplayFor(model => model.TreatName)</h4>
+
+@using(Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.TreatId)
+
+  @Html.LabelFor(model => model.TreatName)
+  @Html.EditorFor(model => model.TreatName)
+  <br>
+  @Html.Label("Select treat")
+  @Html.DropDownList("TreatId")
+
+  <input type="submit" value="save">
+}
+
+<p>@Html.ActionLink("Back to treat list", "Index")</p>
+<p>@Html.ActionLink("Back to home", "Index", "Home")</p>
