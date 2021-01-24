@@ -25,7 +25,7 @@ namespace SweetSavory
             services.AddMvc();
 
             services.AddEntityFrameworkMySql()
-                .AddDbContext<MusicOrgContext>(options => options
+                .AddDbContext<SweetSavoryContext>(options => options
                 .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
         }
 
