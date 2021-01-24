@@ -1,0 +1,31 @@
+@model SweetSavory.Models.Treat;
+
+<h1>Treat details</h1>
+<hr>
+<h3>@Html.DisplayFor(model => model.TreatName)</h3>
+<hr>
+
+@if(@Model.Flavors.Count == 0)
+{
+  <p>This treat does not have any flavors listed</p>
+}
+else
+{
+  <h3>Flavors</h3>
+  @foreach(var join in Model.Flavors)
+  {
+    @using (Html.BeginForm("DeleteFlavor", "Treats"))
+    {
+      <p>@Html.ActionLink($"{join.Flavor.FlavorName}", "Details", "Flavors", new { id = join.Flavor.FlavorId })</p><br>
+      @Html.Hidden("joinId", @join.TreatFlavorId)
+      <input type="submit" value="x"/>
+    }
+  }
+}
+<br><br>
+
+<p>@Html.ActionLink("Edit this treat", "Edit", new { id = Model.TreatId })</p>
+<p>@Html.ActionLink("Delete this treat", "Delete", new { id = Model.TreatId })</p>
+<p>@Html.ActionLink("Add an flavor to this treat", "AddFlavor", new { id = Model.TreatId })</p>
+<p>@Html.ActionLink("Back to treat list", "Index")</p>
+<p>@Html.ActionLink("Back to home", "Index", "Home")</p>
