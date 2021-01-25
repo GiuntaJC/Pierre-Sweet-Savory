@@ -16,8 +16,9 @@ namespace SweetSavory.Controllers
     private readonly SweetSavoryContext _db;
     private readonly UserManager<ApplicationUser> _userManager;
 
-    public TreatsController(SweetSavoryContext db)
+    public TreatsController(UserManager<ApplicationUser> userManager, SweetSavoryContext db)
     {
+      _userManager = userManager;
       _db = db;
     }
 
