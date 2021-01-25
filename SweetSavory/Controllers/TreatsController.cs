@@ -3,12 +3,18 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SweetSavory.Models;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace SweetSavory.Controllers
 {
+  [Authorize]
   public class TreatsController : Controller
   {
     private readonly SweetSavoryContext _db;
+    private readonly UserManager<ApplicationUser> _userManager;
 
     public TreatsController(SweetSavoryContext db)
     {
