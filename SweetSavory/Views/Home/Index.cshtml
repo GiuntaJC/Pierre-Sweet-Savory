@@ -1,5 +1,24 @@
+@using SweetSavory.Models;
+
 <h1>Pierre's Sweet and Savory Treats</h1>
+<hr>
+
+<h2>Treats</h2>
+<ul>
+@foreach (Treat treat in @Model["treats"])
+{
+    <li>@treat.TreatName</li>
+}
+</ul>
+<h2>Flavors</h2>
+<ul>
+@foreach (Flavor flavor in @Model["flavors"])
+{
+    <li>@flavor.FlavorName</li>
+}
+</ul>
 <hr>
 
 <p>@Html.ActionLink("See all games", "Index", "Games")</p>
 <p>@Html.ActionLink("See all consoles", "Index", "GConsoles")</p>
+<p>@Html.ActionLink("Create an Account, Login or Log Out", "Index", "Account")</p>
