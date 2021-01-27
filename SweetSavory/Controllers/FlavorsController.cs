@@ -1,19 +1,26 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SweetSavory.Models;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace SweetSavory.Controllers
 {
+  [Authorize]
   public class FlavorsController : Controller
   {
     private readonly SweetSavoryContext _db;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public FlavorsController(SweetSavoryContext db)
+    public FlavorsController(UserManager<ApplicationUser> userManager, SweetSavoryContext db)
     {
+      _userManager = userManager;
       _db = db;
     }
-
     public ActionResult Index()
     {
       return View(_db.Flavors.ToList());
@@ -21,6 +28,7 @@ namespace SweetSavory.Controllers
 
     public ActionResult Create()
     {
+      ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "TreatName");
       return View();
     }
 

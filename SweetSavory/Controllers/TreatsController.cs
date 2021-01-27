@@ -37,7 +37,6 @@ namespace SweetSavory.Controllers
     public ActionResult Create(Treat treat, Flavor flavor, int FlavorId)
     {
       _db.Treats.Add(treat);
-      _db.Flavors.Add(flavor);
       if(FlavorId != 0)
       {
         _db.TreatFlavor.Add(new TreatFlavor() { FlavorId = FlavorId, TreatId = treat.TreatId});
